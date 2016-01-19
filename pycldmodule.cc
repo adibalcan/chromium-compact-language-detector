@@ -13,11 +13,14 @@
 //
 
 #include <Python.h>
+#ifdef _WIN32
+#include <string.h>
+#else
 #include <strings.h>
+#endif
 
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
-#endif
 
 #include "compact_lang_det.h"
 #include "encodings.h"
