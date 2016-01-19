@@ -22,8 +22,10 @@
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
 
+/*
 #include "compact_lang_det.h"
 #include "encodings.h"
+*/
 
 // From ../../internal:
 #include "lang_script.h"
