@@ -28,7 +28,7 @@
 */
 
 // From ../../internal:
-#include "lang_script.h"
+//#include "lang_script.h"
 
 // impl is in ./encodings.cc:
 CLD2::Encoding EncodingFromName(const char *name);
