@@ -13,14 +13,13 @@
 //
 
 #include <stdio.h>
+#ifdef _WIN32
+#include <string.h>
+#else
 #include <strings.h>
+#endif
 #include "compact_lang_det.h"
 #include "encodings.h"
-
-struct cld_encoding {
-  const char *name;
-  CLD2::Encoding encoding;
-};
 
 extern const cld_encoding cld_encoding_info[] = {
   {"ISO_8859_1", CLD2::ISO_8859_1},
@@ -102,10 +101,13 @@ extern const cld_encoding cld_encoding_info[] = {
 
 CLD2::Encoding EncodingFromName(const char *name) {
   for(int i=0;i<CLD2::NUM_ENCODINGS;i++) {
+    #ifdef _WIN32
+    if (!_stricmp(cld_encoding_info[i].name, name)) {
+    #else
     if (!strcasecmp(cld_encoding_info[i].name, name)) {
+    #endif
       return cld_encoding_info[i].encoding;
     }
   }
-
   return CLD2::UNKNOWN_ENCODING;
 }
